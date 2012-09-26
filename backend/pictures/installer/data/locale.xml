@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+  <backend>
+    <core>
+      <item type="label" name="Pictures">
+        <translation language="nl"><![CDATA[fotos]]></translation>
+        <translation language="en"><![CDATA[pictures]]></translation>
+        <translation language="fr"><![CDATA[photos]]></translation>
+      </item>
+       <item type="error" name="DownloadError">
+        <translation language="nl"><![CDATA[Er ging iets mis met het downloaden]]></translation>
+        <translation language="en"><![CDATA[Something went wrong during download]]></translation>
+      </item>
+    </core>
+    <pictures>
+      <item type="label" name="Album">
+        <translation language="nl"><![CDATA[album]]></translation>
+        <translation language="en"><![CDATA[album]]></translation>
+        <translation language="fr"><![CDATA[album]]></translation>
+      </item>
+       <item type="message" name="Linked">
+        <translation language="nl"><![CDATA[gelinkt aan]]></translation>
+        <translation language="en"><![CDATA[linked to]]></translation>
+      </item>
+    </pictures>
+  </backend>
+</locale>

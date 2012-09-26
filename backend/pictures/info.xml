@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<name>pictures</name>
+	<version>1.0.0</version>
+	<requirements>
+		<minimum_version>2.0.0</minimum_version>
+	</requirements>
+	<description>
+		<![CDATA[
+			The picture module. Does things... with pictures!
+		]]>
+	</description>
+	<authors>
+		<author>
+			<name><![CDATA[Sam Tubbax]]></name>
+			<url><![CDATA[http://www.sumocoders.be]]></url>
+		</author>
+	</authors>
+</module>
