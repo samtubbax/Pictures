@@ -7,7 +7,6 @@
  */
 class FrontendPicturesWidgetShow extends FrontendBaseWidget
 {
-
 	/**
 	 * Execute the widget
 	 *
@@ -15,6 +14,8 @@ class FrontendPicturesWidgetShow extends FrontendBaseWidget
 	 */
 	public function execute()
 	{
+		parent::execute();
+
 		$db = FrontendModel::getDB();
 
 		$this->loadTemplate();
