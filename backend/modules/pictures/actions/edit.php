@@ -86,6 +86,7 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 		$fakeImage['sequence'] = 0;
 		$fakeImage['filename'] = '';
 		$fakeImage['title'] = '';
+		$fakeImage['tagline'] = '';
 		$fakeImage['url'] = '';
 		$fakeImage['index'] = 0;
 		$fakeImage['error'] = '';
@@ -93,16 +94,17 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 		$this->imageData[] = $fakeImage;
 
 		$imageDatagrid = new BackendDataGridArray($this->imageData);
-		$imageDatagrid->setColumnsHidden(array('filename', 'index', 'title', 'url'));
+		$imageDatagrid->setColumnsHidden(array('filename', 'index', 'title', 'url', 'tagline'));
 		$imageDatagrid->setHeaderLabels(array('error' => ''));
 		$imageDatagrid->addColumn('preview', '', '<img src="' . FRONTEND_FILES_URL . '/pictures/100x/[filename]" width="100" />');
 		$imageDatagrid->addColumn('titleField', ucfirst(BL::lbl('Title')), '<input type="text" value="[title]" class="titleField" name="image_title_[index]" id="image_title_[index]"');
+		$imageDatagrid->addColumn('taglineField', ucfirst(BL::lbl('Tagline')), '<input type="text" value="[tagline]" class="taglineField" name="image_tagline_[index]" id="image_tagline_[index]"');
 		$imageDatagrid->addColumn('urlField', ucfirst(BL::lbl('Link')), '<input type="text" value="[url]" class="urlField" name="image_url_[index]" id="image_url_[index]"');
 		$imageDatagrid->addColumn('input', '', '<input class="fileField" style="display:none" type="file" name="image_upload_[index]" id="image_upload_[index]" />
 												<input class="imageField" type="hidden" value="[filename]" name="image_[index]" id="image_[index]" />
 												<input type="hidden" class="sequenceField" value="[sequence]" name="sequence_[index]" id="sequence_[index]" />');
 		$imageDatagrid->addColumn('delete', null, BL::lbl('Delete'), null, '#');
-		$imageDatagrid->setColumnsSequence(array('preview', 'titleField', 'input', 'urlField', 'error', 'delete'));
+		$imageDatagrid->setColumnsSequence(array('preview', 'titleField', 'taglineField' ,'input', 'urlField', 'error', 'delete'));
 		$imageDatagrid->enableSequenceByDragAndDrop();
 		$this->tpl->assign('imageDatagrid', $imageDatagrid->getContent());
 
@@ -178,6 +180,7 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 			{
 				$image['sequence'] = SpoonFilter::getPostValue('sequence_' . $image['index'], null, null);
 				$image['title'] = SpoonFilter::getPostValue('image_title_' . $image['index'], null, null);
+				$image['tagline'] = SpoonFilter::getPostValue('image_tagline_' . $image['index'], null, null);
 				$image['url'] = SpoonFilter::getPostValue('image_url_' . $image['index'], null, null);
 
 				if($image['title'] == null) $image['error'] = BL::err('TitleIsRequired');
@@ -202,6 +205,7 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 					$albumImages[] = array('filename' => $filenameImg,
 											'sequence' => $sequence,
 											'title' => $image['title'],
+											'tagline' => $image['tagline'],
 											'url' => $image['url'],
 											'album_id' => $this->id);
 				}

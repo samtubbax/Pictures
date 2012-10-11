@@ -27,6 +27,7 @@ jsBackend.pictures = {
 				$newImage.find('input.fileField').prop('id', 'image_upload_' + index).prop('name', 'image_upload_' + index).show().val('');
 				$newImage.find('input.imageField').prop('id', 'image_' + index).prop('name', 'image_' + index).val('');
 				$newImage.find('input.titleField').prop('id', 'image_title_' + index).prop('name', 'image_title_' + index).val('');
+				$newImage.find('input.taglineField').prop('id', 'image_tagline_' + index).prop('name', 'image_tagline_' + index).val('');
 				$newImage.find('input.urlField').prop('id', 'image_url_' + index).prop('name', 'image_url_' + index).val('');
 				$newImage.find('input.sequenceField').prop('id', 'sequence_' + index).prop('name', 'sequence_' + index).val($('.imageGrid tr').length + 1);
 				$newImage.find('.iconDelete').show();

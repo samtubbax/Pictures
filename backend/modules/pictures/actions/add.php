@@ -33,6 +33,7 @@ class BackendPicturesAdd extends BackendBaseActionAdd
 	{
 		$this->frm = new BackendForm('add');
 		$this->frm->addText('title', null, null, 'inputText title', 'inputTextError title');
+		$this->frm->addText('tagline', null, null);
 
 	}
 

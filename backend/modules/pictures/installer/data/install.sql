@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `pictures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tagline` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `album_id` int(11) NOT NULL,

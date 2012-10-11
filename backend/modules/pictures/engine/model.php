@@ -106,7 +106,7 @@ class BackendPicturesModel
 		$data = (array) $db->getRecord('SELECT * FROM pictures_albums WHERE id = ?', $id);
 		if(empty($data)) return $data;
 
-		$data['images'] = (array) $db->getRecords('SELECT title, sequence, url, filename FROM pictures WHERE album_id = ? ORDER BY sequence', $id);
+		$data['images'] = (array) $db->getRecords('SELECT title, tagline, sequence, url, filename FROM pictures WHERE album_id = ? ORDER BY sequence', $id);
 
 		return $data;
 	}
