@@ -44,7 +44,7 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 	private function getData()
 	{
 		$this->record = (array) BackendPicturesModel::getAlbum($this->id);
-		foreach($this->record['images'] as $i=>&$image)
+		foreach($this->record['images'] as $i => &$image)
 		{
 			$image['index'] = $i + 1;
 		}
@@ -208,8 +208,6 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 			}
 			BackendPicturesModel::insertPictures($albumImages, $this->id);
 
-
-
 			if($this->frm->isCorrect())
 			{
 				// build item
@@ -221,7 +219,10 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 
 				foreach(BackendLanguage::getActiveLanguages() as $language)
 				{
-					BackendLocaleModel::insert(array('user_id' => 0,
+					try
+					{
+
+						BackendModel::getDB()->insert('locale', array('user_id' => 0,
 												'language' => $language,
 												'application' => 'backend',
 												'module' => 'pages',
@@ -229,6 +230,16 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 												'name' => SpoonFilter::toCamelCase($item['title']),
 												'value' => $item['title'],
 												'edited_on' => BackendModel::getUTCDate()));
+
+
+						BackendLocaleModel::buildCache($language, 'backend');
+
+
+					}
+					catch(PDOException $e)
+					{
+						if(substr_count($e->getMessage(), 'Duplicate entry') == 0) throw $e;
+					}
 				}
 
 				// redirect

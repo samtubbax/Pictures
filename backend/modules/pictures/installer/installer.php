@@ -31,6 +31,13 @@ class PicturesInstaller extends ModuleInstaller
 		$this->setActionRights(1, 'pictures', 'delete');
 		$this->setActionRights(1, 'pictures', 'download');
 
+		SpoonDirectory::create(FRONTEND_FILES_PATH . '/pictures');
+		SpoonDirectory::create(FRONTEND_FILES_PATH . '/pictures/source');
+		SpoonDirectory::create(FRONTEND_FILES_PATH . '/pictures/100x');
+
+		SpoonFile::setContent(FRONTEND_FILES_PATH . '/pictures/source/.gitignore', "*\n!.gitignore");
+		SpoonFile::setContent(FRONTEND_FILES_PATH . '/pictures/100x/.gitignore', "*\n!.gitignore");
+
 		// set navigation
 		$navigationModulesId = $this->setNavigation(null, 'Modules');
 		$this->setNavigation($navigationModulesId, 'Pictures', 'pictures/index', array('pictures/add', 'pictures/edit'));

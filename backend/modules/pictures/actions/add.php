@@ -53,7 +53,10 @@ class BackendPicturesAdd extends BackendBaseActionAdd
 
 				foreach(BackendLanguage::getActiveLanguages() as $language)
 				{
-					BackendLocaleModel::insert(array('user_id' => 0,
+					try
+					{
+
+						BackendModel::getDB()->insert('locale', array('user_id' => 0,
 												'language' => $language,
 												'application' => 'backend',
 												'module' => 'pages',
@@ -61,6 +64,17 @@ class BackendPicturesAdd extends BackendBaseActionAdd
 												'name' => SpoonFilter::toCamelCase($item['title']),
 												'value' => $item['title'],
 												'edited_on' => BackendModel::getUTCDate()));
+
+
+						BackendLocaleModel::buildCache($language, 'backend');
+
+
+					}
+					catch(PDOException $e)
+					{
+						if(substr_count($e->getMessage(), 'Duplicate entry') == 0) throw $e;
+					}
+
 				}
 
 
