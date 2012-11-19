@@ -18,6 +18,21 @@
         <translation language="en"><![CDATA[album]]></translation>
         <translation language="fr"><![CDATA[album]]></translation>
       </item>
+       <item type="label" name="Link">
+        <translation language="nl"><![CDATA[link]]></translation>
+        <translation language="en"><![CDATA[link]]></translation>
+        <translation language="fr"><![CDATA[lien]]></translation>
+      </item>
+       <item type="label" name="Tagline">
+        <translation language="nl"><![CDATA[tagline]]></translation>
+        <translation language="en"><![CDATA[tagline]]></translation>
+        <translation language="fr"><![CDATA[tagline]]></translation>
+      </item>
+       <item type="label" name="Template">
+        <translation language="nl"><![CDATA[template]]></translation>
+        <translation language="en"><![CDATA[template]]></translation>
+        <translation language="fr"><![CDATA[template]]></translation>
+      </item>
        <item type="message" name="Linked">
         <translation language="nl"><![CDATA[gelinkt aan]]></translation>
         <translation language="en"><![CDATA[linked to]]></translation>

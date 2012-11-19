@@ -34,6 +34,7 @@ class BackendPicturesAdd extends BackendBaseActionAdd
 		$this->frm = new BackendForm('add');
 		$this->frm->addText('title', null, null, 'inputText title', 'inputTextError title');
 		$this->frm->addText('tagline', null, null);
+		$this->frm->addDropdown('template', BackendPicturesModel::getTemplatesForDropdown());
 
 	}
 
@@ -51,6 +52,7 @@ class BackendPicturesAdd extends BackendBaseActionAdd
 			{
 				// build item
 				$item['title'] = $this->frm->getField('title')->getValue();
+				$item['template'] = $this->frm->getField('template')->getValue();
 
 				foreach(BackendLanguage::getActiveLanguages() as $language)
 				{

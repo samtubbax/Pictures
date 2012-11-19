@@ -112,6 +112,20 @@ class BackendPicturesModel
 	}
 
 	/**
+	 * Get the templates for a dropdown
+	 *
+	 * @return array
+	 */
+	public static function getTemplatesForDropdown()
+	{
+		// @remark When adding new templates Add them here + in frontend layout folder as show_<name-of-template>.tpl
+		return array(
+			'default' => BL::lbl('Default'),
+			'alt' => BL::lbl('Alternative')
+		);
+	}
+
+	/**
 	 * Insert an album
 	 *
 	 * @param array $values

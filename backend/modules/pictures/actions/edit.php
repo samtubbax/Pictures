@@ -62,6 +62,7 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 		$this->frm->addText('title', $this->record['title'], null, 'inputText title', 'inputTextError title');
 		// need this so multipart encding is set
 		$this->frm->addFile('redHerring');
+		$this->frm->addDropdown('template', BackendPicturesModel::getTemplatesForDropdown(), $this->record['template']);
 
 		$this->imageData = $this->record['images'];
 	}
@@ -217,6 +218,7 @@ class BackendPicturesEdit extends BackendBaseActionEdit
 				// build item
 				$item['id'] = $this->id;
 				$item['title'] = $this->frm->getField('title')->getValue();
+				$item['template'] = $this->frm->getField('template')->getValue();
 
 				// insert the item
 				BackendPicturesModel::updateAlbum($item);

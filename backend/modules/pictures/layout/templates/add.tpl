@@ -11,6 +11,14 @@
 		{$txtTitle} {$txtTitleError}
 	</p>
 
+	<div class="box">
+		<div class="heading"></div>
+		<div class="options oneLiner">
+			<label for="template">{$lblTemplate|ucfirst}</label>
+			{$ddmTemplate} {$ddmTemplateError}
+		</div>
+	</div>
+
 	<div class="fullwidthOptions">
 		<div class="buttonHolderRight">
 			<input id="addButton" class="inputButton button mainButton" type="submit" name="add" value="{$lblAdd|ucfirst}" />

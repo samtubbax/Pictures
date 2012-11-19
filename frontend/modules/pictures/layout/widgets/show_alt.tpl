@@ -1,4 +1,4 @@
-<section id="picturesWidget">
+<section id="picturesWidgetAlternative">
 	<ul>
 		<li>
 			{iteration:widgetPictures.pictures}
@@ -6,5 +6,4 @@
 			{/iteration:widgetPictures.pictures}
 		</li>
 	</ul>
-
 </section>
