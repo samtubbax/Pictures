@@ -1,3 +1,5 @@
-Uses Twitter Bootstrap for All things Carousel
+Added the ability to use multiple templates
 
-NOT YET TESTED
+HOW TO:
+Create new tpl files in /layout/templates/widgets with names "show_myTemplateName.tpl"
+Then add them to the dropdown in the (backend) /model/engine.php getTemplatesForDropdown() function
