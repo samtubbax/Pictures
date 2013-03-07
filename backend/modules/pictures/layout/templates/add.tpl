@@ -6,18 +6,42 @@
 </div>
 
 {form:add}
-	<p>
-		<label for="title">{$lblTitle|ucfirst}</label>
-		{$txtTitle} {$txtTitleError}
-	</p>
-
 	<div class="box">
 		<div class="heading"></div>
 		<div class="options oneLiner">
-			<label for="template">{$lblTemplate|ucfirst}</label>
-			{$ddmTemplate} {$ddmTemplateError}
+			<p class="oneLiner">
+				<label for="template">{$lblTemplate|ucfirst}</label>
+				{$ddmTemplate} {$ddmTemplateError}
+			</p>
 		</div>
 	</div>
+
+	<div class="tabs">
+		<ul>
+			{iteration:languages}
+				<li><a href="#tab{$languages.language}">{$languages.language|ucfirst}</a></li>
+			{/iteration:languages}
+		</ul>
+
+		{iteration:languages}
+		<div id="tab{$languages.language}"
+			<p>
+				<label for="title{$languages.language|ucfirst}">{$lblTitle|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
+				{$languages.txtTitle} {$languages.txtTitleError}
+			</p>
+			<div class="box">
+				<div class="heading">
+					<label for="text{$languages.language|ucfirst}">{$lblText|ucfirst}</label>
+				</div>
+				<div class="optionsRTE">
+						{$languages.txtText} {$languages.txtTextError}
+				</div>
+			</div>
+		</div>
+		{/iteration:languages}
+	</div>
+
+
 
 	<div class="fullwidthOptions">
 		<div class="buttonHolderRight">

@@ -18,6 +18,11 @@
         <translation language="en"><![CDATA[album]]></translation>
         <translation language="fr"><![CDATA[album]]></translation>
       </item>
+    <item type="label" name="Cover">
+        <translation language="nl"><![CDATA[coverfoto]]></translation>
+        <translation language="en"><![CDATA[coverphoto]]></translation>
+        <translation language="fr"><![CDATA[coverphoto]]></translation>
+    </item>
        <item type="label" name="Link">
         <translation language="nl"><![CDATA[link]]></translation>
         <translation language="en"><![CDATA[link]]></translation>
@@ -28,6 +33,16 @@
         <translation language="en"><![CDATA[tagline]]></translation>
         <translation language="fr"><![CDATA[tagline]]></translation>
       </item>
+    <item type="label" name="Slideshow">
+        <translation language="nl"><![CDATA[slideshow-widget]]></translation>
+        <translation language="en"><![CDATA[slideshow-widget]]></translation>
+        <translation language="fr"><![CDATA[slideshow-widget]]></translation>
+    </item>
+    <item type="label" name="Lightbox">
+        <translation language="nl"><![CDATA[lightbox-widget]]></translation>
+        <translation language="en"><![CDATA[lightbox-widget]]></translation>
+        <translation language="fr"><![CDATA[lightbox-widget]]></translation>
+    </item>
        <item type="label" name="Template">
         <translation language="nl"><![CDATA[template]]></translation>
         <translation language="en"><![CDATA[template]]></translation>
@@ -39,4 +54,13 @@
       </item>
     </pictures>
   </backend>
+  <frontend>
+      <core>
+      <item type="label" name="Lightbox">
+          <translation language="nl"><![CDATA[lightbox-widget]]></translation>
+          <translation language="en"><![CDATA[lightbox-widget]]></translation>
+          <translation language="fr"><![CDATA[lightbox-widget]]></translation>
+      </item>
+      </core>
+  </frontend>
 </locale>

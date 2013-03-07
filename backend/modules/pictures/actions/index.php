@@ -23,8 +23,10 @@ class BackendPicturesIndex extends BackendBaseActionIndex
 	 */
 	public function loadDataGrid()
 	{
-		$this->dataGrid = new BackendDataGridDB(BackendPicturesModel::QRY_BROWSE_ALBUMS);
+		$this->dataGrid = new BackendDataGridDB(BackendPicturesModel::QRY_BROWSE_ALBUMS, BackendLanguage::getInterfaceLanguage());
 		$this->dataGrid->setColumnURL('title', BackendModel::createURLForAction('edit') . '&amp;id=[id]');
+		$this->dataGrid->setColumnFunction(array('BackendPicturesIndex', 'parseType'), array('[template]'), 'template');
+		$this->dataGrid->enableSequenceByDragAndDrop();
 		$this->dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit') . '&amp;id=[id]');
 	}
 
@@ -34,5 +36,20 @@ class BackendPicturesIndex extends BackendBaseActionIndex
 	public function parse()
 	{
 		if($this->dataGrid->getContent() != null) $this->tpl->assign('dataGrid', $this->dataGrid->getContent());
+	}
+
+	public static function parseType($var)
+	{
+		switch($var)
+		{
+			case 'default':
+				return BL::lbl('Default');
+				break;
+			case 'alt':
+				return BL::lbl('Alternative');
+			case 'slideshow':
+				return BL::lbl('Slideshow');
+
+		}
 	}
 }

@@ -1,3 +1,6 @@
 #addPicture { float:right; margin-top:10px; }
 td.error {color:#FF0000}
 input#website{width:500px;}
+.titlePreview {
+	margin-right: 20px;
+}

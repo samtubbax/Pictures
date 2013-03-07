@@ -41,5 +41,35 @@ class PicturesInstaller extends ModuleInstaller
 		// set navigation
 		$navigationModulesId = $this->setNavigation(null, 'Modules');
 		$this->setNavigation($navigationModulesId, 'Pictures', 'pictures/index', array('pictures/add', 'pictures/edit'));
+
+
+		$picturesId = $this->insertExtra('pictures', 'block', 'Pictures', null, null, 'N', 6000);
+		// get search extra id
+		$searchId = (int) $this->getDB()->getVar(
+			'SELECT id FROM modules_extras
+			 WHERE module = ? AND type = ? AND action = ?',
+			array('search', 'widget', 'form')
+		);
+
+		// loop languages
+		foreach($this->getLanguages() as $language)
+		{
+			// check if a page for blog already exists in this language
+			if(!(bool) $this->getDB()->getVar(
+				'SELECT 1
+				 FROM pages AS p
+				 INNER JOIN pages_blocks AS b ON b.revision_id = p.revision_id
+				 WHERE b.extra_id = ? AND p.language = ?
+				 LIMIT 1',
+				array($picturesId, $language)))
+			{
+				$this->insertPage(
+					array('title' => 'Pictures', 'language' => $language),
+					null,
+					array('extra_id' => $picturesId, 'position' => 'main'),
+					array('extra_id' => $searchId, 'position' => 'top')
+				);
+			}
+		}
 	}
 }

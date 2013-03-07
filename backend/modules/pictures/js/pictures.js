@@ -16,6 +16,21 @@ jsBackend.pictures = {
 		init: function () {
 			jsBackend.pictures.tableSequence.init();
 
+			$('.imageGrid tr').not(':last').each(function () {
+
+				if($(this).find('td.preview img').length > 0)
+				{
+					$(this).find('input[type="file"]').remove();
+				}
+			});
+
+			$('.imageGrid tr .iconEdit').live('click', function (e) {
+				e.preventDefault();
+				var $targetPicture = $(this).parents('.imageGrid tr');
+				$targetPicture.find('.titleField input').show().prop('disabled',false);
+				$targetPicture.find('.titleField .titlePreview').hide();
+			});
+
 			$('#addPicture').click(function (e) {
 				e.preventDefault();
 				var index = $('.imageGrid tr').length;
@@ -24,12 +39,16 @@ jsBackend.pictures = {
 				var $newImage = $('.imageGrid tr:last').clone();
 				$newImage.show();
 				$newImage.find('img').remove();
-				$newImage.find('input.fileField').prop('id', 'image_upload_' + index).prop('name', 'image_upload_' + index).show().val('');
-				$newImage.find('input.imageField').prop('id', 'image_' + index).prop('name', 'image_' + index).val('');
-				$newImage.find('input.titleField').prop('id', 'image_title_' + index).prop('name', 'image_title_' + index).val('');
-				$newImage.find('input.taglineField').prop('id', 'image_tagline_' + index).prop('name', 'image_tagline_' + index).val('');
-				$newImage.find('input.urlField').prop('id', 'image_url_' + index).prop('name', 'image_url_' + index).val('');
-				$newImage.find('input.sequenceField').prop('id', 'sequence_' + index).prop('name', 'sequence_' + index).val($('.imageGrid tr').length + 1);
+				$newImage.find('input.fileField').attr('id', 'image_upload_' + index).attr('name', 'image_upload_' + index).show().val('');
+				$newImage.find('input.imageField').attr('id', 'image_' + index).prop('name', 'image_' + index).val('');
+				$newImage.find('.iconEdit').hide();
+				$newImage.find('.titleField input').show().prop('disabled',false);
+				$newImage.find('.titleField .titlePreview').hide();
+				$newImage.find('input.titleField').each(function () {
+
+					$(this).attr('id', 'image_title_' + $(this).data('language') + '_' + index).attr('name', 'image_title_' + $(this).data('language') + '_' + index).val('');
+				});
+				$newImage.find('input.sequenceField').attr('id', 'sequence_' + index).attr('name', 'sequence_' + index).val($('.imageGrid tr').length + 1);
 				$newImage.find('.iconDelete').show();
 
 				$('.imageGrid tr:last').before($newImage);

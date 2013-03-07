@@ -12,7 +12,7 @@ class FrontendPicturesConfig extends FrontendBaseConfig
 	 *
 	 * @var	string
 	 */
-	protected $defaultAction = 'show';
+	protected $defaultAction = 'index';
 
 	/**
 	 * The disabled actions
